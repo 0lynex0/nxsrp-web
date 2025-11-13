@@ -1,0 +1,212 @@
+<!doctype html>
+
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NXSRP — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050005;
+      --neon-1: #9b59ff; /* primary purple */
+      --neon-2: #5b2cff; /* deeper */
+      --glass: rgba(255,255,255,0.03);
+      --accent-glow: 0 6px 30px rgba(155,89,255,0.16), 0 0 30px rgba(91,44,255,0.06);
+      --radius: 14px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e9e7ff;background:linear-gradient(180deg,var(--bg),#020003);}/* NAV */
+.wrap{max-width:var(--max-width);margin:40px auto;padding:20px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;box-shadow:var(--accent-glow)}
+.brand h1{margin:0;font-size:20px;letter-spacing:1px}
+nav{display:flex;gap:14px}
+nav a{color:#dcd6ff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+nav a.store{background:linear-gradient(90deg,rgba(155,89,255,0.12),rgba(91,44,255,0.06));box-shadow:0 8px 30px rgba(91,44,255,0.04)}
+.cta{display:flex;gap:8px}
+.btn{padding:8px 14px;border-radius:10px;background:transparent;border:1px solid rgba(155,89,255,0.14);color:#e8e4ff;font-weight:600;backdrop-filter: blur(4px)}
+
+/* HERO */
+.hero{margin-top:28px;padding:32px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(155,89,255,0.04), rgba(91,44,255,0.02));box-shadow:var(--accent-glow);display:grid;grid-template-columns:1fr 420px;gap:24px}
+.server-title{align-self:center}
+.server-title h2{font-size:44px;margin:0 0 8px;color:linear-gradient(90deg,var(--neon-1),var(--neon-2))}
+.server-title p{margin:0 0 18px;color:#bfb8ff;opacity:0.95}
+
+/* neon text effect */
+.neon{font-weight:800;color:var(--neon-1);text-shadow:0 0 18px rgba(155,89,255,0.25),0 0 46px rgba(91,44,255,0.12)}
+
+.server-stats{display:flex;gap:12px}
+.stat{background:var(--glass);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);min-width:110px;text-align:center}
+.stat b{display:block;font-size:20px}
+.join{margin-top:18px}
+.join a{display:inline-block;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(155,89,255,0.16)}
+
+/* NEWS */
+.news{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(155,89,255,0.06);min-height:120px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .32s ease, box-shadow .32s ease}
+.card:hover{transform:translateY(-8px);box-shadow:var(--accent-glow)}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{margin:0;color:#cfc7ff;font-size:14px}
+
+/* GALLERY */
+.gallery{margin-top:36px;border-radius:12px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(155,89,255,0.03)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.thumb{height:120px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.05) contrast(1.02)}
+.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.18));opacity:0;transition:opacity .2s}
+.thumb:hover:after{opacity:1}
+
+/* footer */
+footer{margin-top:30px;padding:18px;border-radius:12px;text-align:center;color:#d8d2ff;opacity:0.9}
+.links{display:flex;gap:12px;justify-content:center;margin-top:10px}
+.social{padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(155,89,255,0.06),rgba(91,44,255,0.03));text-decoration:none;color:#f4f0ff;font-weight:700}
+
+/* responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;}
+  .news{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  nav{display:none}
+  header{gap:8px}
+  .wrap{margin:18px}
+  .news{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(1,1fr)}
+}
+
+/* small animations */
+.floaty{animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+.glow-border{position:relative}
+.glow-border:before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(120deg,transparent 0, rgba(155,89,255,0.08) 20%, transparent 50%);filter:blur(18px);opacity:0.7;z-index:-1}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">NX</div>
+        <div>
+          <h1 class="neon">NXSRP</h1>
+          <div style="font-size:12px;color:#cfc7ff;opacity:0.9">FiveM roleplay server • nxsrp.cz</div>
+        </div>
+      </div><nav aria-label="Hlavní menu">
+    <a href="#home">Home</a>
+    <a href="#rules">Pravidla</a>
+    <a href="#recruit">Nábor</a>
+    <a href="#faq">FAQ</a>
+    <a class="store" href="https://nxsrp.mysellauth.com" target="_blank" rel="noopener">Store</a>
+  </nav>
+
+  <div class="cta">
+    <a class="btn" href="https://discord.gg/NmK5jaGjQW" target="_blank">Připojit se (Discord)</a>
+  </div>
+</header>
+
+<section class="hero glow-border" id="home">
+  <div class="server-title">
+    <h2 class="neon">Vítej na NXSRP</h2>
+    <p>Moderní český roleplay server postavený pro kvalitní RP zážitky. Aktuální verze, komunitní eventy a aktivity.</p>
+
+    <div class="server-stats">
+      <div class="stat">
+        <div style="font-size:12px;color:#cfc7ff">Online</div>
+        <b>24/200</b>
+        <small style="color:#b8b0ff;display:block">Aktuální hráči</small>
+      </div>
+      <div class="stat">
+        <div style="font-size:12px;color:#cfc7ff">Verze</div>
+        <b>1.0.3</b>
+        <small style="color:#b8b0ff;display:block">Stabilní build</small>
+      </div>
+      <div class="stat">
+        <div style="font-size:12px;color:#cfc7ff">IP</div>
+        <b>nxsrp.cz</b>
+        <small style="color:#b8b0ff;display:block">Připoj se přes FiveM</small>
+      </div>
+    </div>
+
+    <div class="join">
+      <a href="https://discord.gg/NmK5jaGjQW" target="_blank">Připoj se na Discord</a>
+    </div>
+  </div>
+
+  <aside style="align-self:center">
+    <div style="padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(155,89,255,0.06),rgba(91,44,255,0.02));box-shadow:var(--accent-glow)">
+      <h4 style="margin:0 0 8px">Poslední update</h4>
+      <div style="font-size:14px;color:#efeaff">Nová práce LSPD, opravy economy systému a event v neděli 20:00.</div>
+      <div style="margin-top:10px;text-align:right">
+        <a class="btn" href="#news" style="text-decoration:none">Více</a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<h3 style="margin-top:26px;color:#e9e4ff">Novinky</h3>
+<div class="news" id="news">
+  <article class="card">
+    <div>
+      <h3>Event: Návštěva prezidenta</h3>
+      <p>Večer roleplay event s VIP hostem. Příprava mise a odměny pro nejlepší RP momenty.</p>
+    </div>
+    <div style="font-size:12px;color:#c8bfff">12. listopadu 2025</div>
+  </article>
+
+  <article class="card">
+    <div>
+      <h3>Nová práce: Mechanik</h3>
+      <p>Přidaná práce mechanika s vlastním blipem a mini-hry pro opravu vozidel.</p>
+    </div>
+    <div style="font-size:12px;color:#c8bfff">4. listopadu 2025</div>
+  </article>
+
+  <article class="card">
+    <div>
+      <h3>Economy update</h3>
+      <p>Optimalizace bankovních transakcí a fixy pro opravy pokladen ve frakcích.</p>
+    </div>
+    <div style="font-size:12px;color:#c8bfff">28. října 2025</div>
+  </article>
+</div>
+
+<section class="gallery" aria-label="Galerie">
+  <h3 style="margin:0 0 12px;color:#e9e4ff">Galerie — z minulých eventů</h3>
+  <div class="gallery-grid" id="gallery">
+    <!-- Placeholder images; replace with real screenshots -->
+    <div class="thumb"><img src="https://picsum.photos/seed/nx1/800/600" alt="Screenshot 1"></div>
+    <div class="thumb"><img src="https://picsum.photos/seed/nx2/800/600" alt="Screenshot 2"></div>
+    <div class="thumb"><img src="https://picsum.photos/seed/nx3/800/600" alt="Screenshot 3"></div>
+    <div class="thumb"><img src="https://picsum.photos/seed/nx4/800/600" alt="Screenshot 4"></div>
+  </div>
+</section>
+
+<footer>
+  <div>Kontakt a odkazy</div>
+  <div class="links">
+    <a class="social" href="https://discord.gg/NmK5jaGjQW" target="_blank" rel="noopener">Discord</a>
+    <a class="social" href="https://www.youtube.com/@0lynex0" target="_blank" rel="noopener">YouTube @0lynex0</a>
+    <a class="social" href="https://nxsrp.mysellauth.com" target="_blank" rel="noopener">Store</a>
+  </div>
+  <div style="margin-top:12px;font-size:13px;color:#bfb8ff;opacity:0.8">© NXSRP — všechna práva vyhrazena</div>
+</footer>
+
+  </div>  <script>
+    // Basic interactivity: gallery lightbox
+    document.querySelectorAll('.thumb img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        const src = img.src;
+        const modal = document.createElement('div');
+        modal.style.position='fixed';modal.style.inset=0;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.background='rgba(0,0,0,0.7)';modal.style.zIndex=9999;
+        modal.innerHTML = `\n          <div style="max-width:90%;max-height:90%">\n            <img src="${src}" style="width:100%;height:auto;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,0.6)">\n          </div>`;
+        modal.addEventListener('click', ()=>modal.remove());
+        document.body.appendChild(modal);
+      });
+    });
+  </script></body>
+</html>
