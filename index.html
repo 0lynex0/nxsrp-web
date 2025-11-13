@@ -154,6 +154,22 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   border: none;
 }
 
+.background-grid {
+  position: fixed;
+  inset: 0; /* top:0; bottom:0; left:0; right:0 */
+  z-index: -2; /* pod vším obsahem */
+  background-image:
+    linear-gradient(90deg, #00F8B9 1px, transparent 1px),
+    linear-gradient(0deg,  #00D4FF 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.6;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+}
 
 
 
@@ -163,10 +179,9 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   <div class="cursor-dot"></div>
 
   <!-- Background visual elements -->
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-  <div class="bg-blob blob-3"></div>
-  <div class="starfield"></div>  <div class="container">
+  <div class="background-grid"></div>
+
+  <div class="container">
     <header>
       <div class="brand">
         <img src="https://cdn.discordapp.com/attachments/1432777754017005598/1438563325972578334/nexusresized.png?ex=69175600&is=69160480&hm=fd97fce5ed6cc090bfcb65cd9235e2be039610a2fb8371e5238fc8f8096ce932&" class="logo">
@@ -195,7 +210,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
       <p class="lead">Komunita zaměřená na kvalitní roleplay, pravidelné eventy a přátelské prostředí. Přidej se k nám přes Discord nebo zjisti víc níže.</p>
 
       <div class="actions" role="toolbar">
-        <button class="btn" data-href="https://discord.gg/NmK5jaGjQW">Připojit se</button>
+        <button class="btn" data-href="cfx.re/join/lgoe5j">Připojit se</button>
         <button class="btn ghost" data-href="#news">Poslední novinky</button>
         <button class="btn ghost" data-href="https://nxsrp.mysellauth.com">Obchod</button>
       </div>
