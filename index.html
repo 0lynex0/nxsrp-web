@@ -53,8 +53,12 @@ nav{display:flex;gap:12px;align-items:center}
 .lead{color:#e9e4ff;opacity:0.95;font-size:16px;margin-bottom:18px}
 
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{appearance:none;border:0;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(122,59,255,0.12);cursor:pointer}
+.btn{appearance:none;border:0;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(122,59,255,0.12);cursor:pointer;transition: transform 0.2s ease, box-shadow 0.2s ease;}
 .btn.ghost{background:transparent;border:1px solid rgba(184,123,255,0.12);color:#efeaff}
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--accent-glow);
+}
 
 /* News feed */
 .news{margin-top:20px;display:grid;grid-template-columns:2fr 1fr;gap:18px}
@@ -98,9 +102,29 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 .float{animation:float 6s ease-in-out infinite}
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none; /* aby neblokovala klikání */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+}
+
+
+
+
   </style>
 </head>
 <body>
+  <div class="cursor-dot"></div>
+
   <!-- Background visual elements -->
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
@@ -108,7 +132,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   <div class="starfield"></div>  <div class="container">
     <header>
       <div class="brand">
-        <div class="logo">NX</div>
+        <img src="https://cdn.discordapp.com/attachments/1432777754017005598/1438563325972578334/nexusresized.png?ex=69175600&is=69160480&hm=fd97fce5ed6cc090bfcb65cd9235e2be039610a2fb8371e5238fc8f8096ce932&" class="logo">
         <div>
           <h1>NXSRP</h1>
           <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
@@ -142,7 +166,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
       <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
         <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(184,123,255,0.03)">
           <strong>Aktuální události</strong>
-          <div style="font-size:13px;color:#d8d0ff">Event v neděli — roleplay závody</div>
+          <div style="font-size:13px;color:#d8d0ff">Zatím nic naplánovaného!</div>
         </div>
         <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(184,123,255,0.03)">
           <strong>Tip pro nové hráče</strong>
@@ -164,23 +188,19 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 
   <section class="news" id="news">
     <div class="news-list">
+
       <div class="news-item">
-        <h3>Event: Prezidentův den</h3>
-        <p>Speciální RP event s misemi a odměnami pro zapojené hráče. Více informací na Discordu.</p>
-        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">12. listopadu 2025</div>
+        <h3>Website Launched</h3>
+        <p>Zpracovali jsme nový web, na kterém teď jste.</p>
+        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">13. listopadu 2025</div>
       </div>
 
       <div class="news-item">
-        <h3>Nová práce: Mechanik</h3>
-        <p>Práce obsahuje nové mini-hry pro opravu vozidel a výplaty podle výkonu.</p>
-        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">4. listopadu 2025</div>
+        <h3>1.0.1 Launched</h3>
+        <p>Vydali jsme konečně nový 1.0.1 update zaměřený na auta.</p>
+        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">11. listopadu 2025</div>
       </div>
 
-      <div class="news-item">
-        <h3>Economy update</h3>
-        <p>Optimalizace systému bank a frakcí; méně rollbacků a rychlejší transakce.</p>
-        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">28. října 2025</div>
-      </div>
     </div>
 
     <aside class="highlights">
@@ -198,10 +218,10 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   <section class="gallery" aria-label="Galerie">
     <h3 style="margin:0 0 12px;color:#efeaff">Galerie z eventů</h3>
     <div class="gallery-grid" id="gallery">
-      <div class="thumb"><img src="https://picsum.photos/seed/nx1/800/600" alt="Screenshot 1"></div>
-      <div class="thumb"><img src="https://picsum.photos/seed/nx2/800/600" alt="Screenshot 2"></div>
-      <div class="thumb"><img src="https://picsum.photos/seed/nx3/800/600" alt="Screenshot 3"></div>
-      <div class="thumb"><img src="https://picsum.photos/seed/nx4/800/600" alt="Screenshot 4"></div>
+      <div class="thumb"><img src="https://cdn.discordapp.com/attachments/1425066871060697148/1437188070326665257/image.png?ex=6916f271&is=6915a0f1&hm=3321b4ab05dfaa22cc306a1d548678840d2dacdae7fba240f2c9e36c3d104a98&" alt="Screenshot 1"></div>
+      <div class="thumb"><img src="https://cdn.discordapp.com/attachments/1425066871060697148/1426365520101376082/LSSD_PROMO_1.png?ex=69172028&is=6915cea8&hm=7f33314cfc9f37939c598aa7c2831cd7e273861d5695df488ff474fc0e9330ad&" alt="Screenshot 2"></div>
+      <div class="thumb"><img src="https://cdn.discordapp.com/attachments/1414337376737820692/1436670701674303579/image.png?ex=69170adb&is=6915b95b&hm=22a55f7e719be33a9975fa7f8f7525eed630a9b8bca7a4812ca666a353cb4044&" alt="Screenshot 3"></div>
+      <div class="thumb"><img src="https://cdn.discordapp.com/attachments/1414337376737820692/1436843577710874654/image.png?ex=6917031c&is=6915b19c&hm=a94ba07be7639eac15f5ad47bfac6b53b330d94fb54a8d98f130690b367eeba2&" alt="Screenshot 4"></div>
     </div>
   </section>
 </main>
@@ -242,6 +262,12 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
           window.open(href,'_blank');
         }
       });
+    });
+
+    const dot = document.querySelector('.cursor-dot');
+
+    window.addEventListener('mousemove', e => {
+      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
     // Mobile menu toggle
