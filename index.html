@@ -23,6 +23,26 @@
 .blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
 .blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(255,120,220,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
 
+
+/* Animated slow-moving background gradient */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(270deg, #6a00f4, #00d4ff, #ff5ea2, #ffd500);
+  background-size: 800% 800%;
+  animation: gradientShift 60s ease infinite;
+  opacity: 0.25; /* jemná intenzita */
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 @keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
 @keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
 @keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
@@ -208,7 +228,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 
         <div style="border-radius:10px;overflow:hidden;background:#000;height:190px;display:flex;align-items:center;justify-content:center;">
           <!-- Placeholder: embed YouTube or promo screenshot -->
-          <button class="btn" data-href="https://www.youtube.com/@0lynex0">YouTube @0lynex0</button>
+          <button class="btn" data-href="https://www.youtube.com/@0lynex0">YouTube</button>
         </div>
       </div>
     </aside>
