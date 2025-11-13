@@ -17,7 +17,20 @@
       --max-width:1180px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:radial-gradient(1200px 600px at 10% 10%, rgba(186,123,255,0.06), transparent), radial-gradient(1000px 500px at 90% 90%, rgba(122,59,255,0.03), transparent), var(--bg);}.container{max-width:var(--max-width);margin:28px auto;padding:18px}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}/* Animated background blobs (NoPixel-like vibe) */
+.bg-blob{position:fixed;pointer-events:none;filter:blur(100px) saturate(120%);mix-blend-mode:screen;opacity:0.9;transform:translate3d(0,0,0)}
+.blob-1{width:720px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(184,123,255,0.28), rgba(122,59,255,0.14) 40%, transparent 60%);left:-120px;top:-80px;animation:blobMove1 18s ease-in-out infinite}
+.blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
+.blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(255,120,220,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
+
+@keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
+@keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+@keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
+
+/* subtle starfield dots */
+.starfield{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);background-size:40px 40px;opacity:0.08}
+
+.container{position:relative;z-index:2;max-width:var(--max-width);margin:28px auto;padding:18px}
 
 /* Header */
 header{display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -25,22 +38,22 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
 .brand h1{margin:0;font-size:20px}
 nav{display:flex;gap:12px;align-items:center}
-nav a{color:#efeaff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+.nav-link{appearance:none;border:0;background:transparent;color:#efeaff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
 .store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
 
 /* Mobile menu */
-.menu-btn{display:none;border:1px solid rgba(255,255,255,0.04);background:transparent;padding:8px;border-radius:10px}
+.menu-btn{display:none;border:1px solid rgba(255,255,255,0.04);background:transparent;padding:8px;border-radius:10px;color:#efeaff}
 
 /* Hero */
 .hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:1fr 420px;gap:18px}
-.hero-left{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04)}
+.hero-left{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04);backdrop-filter:blur(6px)}
 .hero-right{padding:20px;background:linear-gradient(180deg, rgba(184,123,255,0.03), rgba(122,59,255,0.02));border:1px solid rgba(184,123,255,0.04);display:flex;flex-direction:column;justify-content:center;align-items:center}
 
 .hero h2{font-size:44px;margin:0 0 8px;color:var(--neon-1);text-shadow:0 6px 40px rgba(184,123,255,0.08)}
 .lead{color:#e9e4ff;opacity:0.95;font-size:16px;margin-bottom:18px}
 
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(122,59,255,0.12)}
+.btn{appearance:none;border:0;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(122,59,255,0.12);cursor:pointer}
 .btn.ghost{background:transparent;border:1px solid rgba(184,123,255,0.12);color:#efeaff}
 
 /* News feed */
@@ -58,13 +71,13 @@ nav a{color:#efeaff;text-decoration:none;padding:8px 12px;border-radius:10px;fon
 /* Gallery */
 .gallery{margin-top:26px;border-radius:12px;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.01));border:1px solid rgba(184,123,255,0.03)}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.thumb{height:140px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02)}
-.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb{height:140px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Footer with icons */
+/* Footer with icon-buttons */
 footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#e8e4ff}
 .social-icons{display:flex;gap:14px;justify-content:center;align-items:center}
-.icon{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);text-decoration:none;color:#fff}
+.icon-btn{appearance:none;border:0;cursor:pointer;width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);color:#fff}
 
 /* responsive */
 @media (max-width:980px){
@@ -88,7 +101,11 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Background visual elements -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+  <div class="starfield"></div>  <div class="container">
     <header>
       <div class="brand">
         <div class="logo">NX</div>
@@ -97,16 +114,16 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
           <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
         </div>
       </div><nav aria-label="Hlavní menu">
-    <a href="#home">Home</a>
-    <a href="#rules">Pravidla</a>
-    <a href="#recruit">Nábor</a>
-    <a href="#faq">FAQ</a>
-    <a class="store" href="https://nxsrp.mysellauth.com" target="_blank" rel="noopener">Store</a>
+    <button class="nav-link" data-href="#home">Home</button>
+    <button class="nav-link" data-href="#rules">Pravidla</button>
+    <button class="nav-link" data-href="#recruit">Nábor</button>
+    <button class="nav-link" data-href="#faq">FAQ</button>
+    <button class="nav-link store" data-href="https://nxsrp.mysellauth.com">Store</button>
   </nav>
 
   <div>
     <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
-    <button class="btn" onclick="location.href='https://discord.gg/NmK5jaGjQW'">Discord</button>
+    <button class="btn" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">Discord</button>
   </div>
 </header>
 
@@ -116,10 +133,10 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
       <h2>Vítej na <span style="color:var(--neon-2)">NXSRP</span></h2>
       <p class="lead">Komunita zaměřená na kvalitní roleplay, pravidelné eventy a přátelské prostředí. Přidej se k nám přes Discord nebo zjisti víc níže.</p>
 
-      <div class="actions">
-        <a class="btn" href="https://discord.gg/NmK5jaGjQW" target="_blank">Připojit se</a>
-        <a class="btn ghost" href="#news">Poslední novinky</a>
-        <a class="btn ghost" href="https://nxsrp.mysellauth.com" target="_blank">Obchod</a>
+      <div class="actions" role="toolbar">
+        <button class="btn" data-href="https://discord.gg/NmK5jaGjQW">Připojit se</button>
+        <button class="btn ghost" data-href="#news">Poslední novinky</button>
+        <button class="btn ghost" data-href="https://nxsrp.mysellauth.com">Obchod</button>
       </div>
 
       <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
@@ -139,7 +156,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
         <div style="font-size:13px;color:#efeaff;margin-bottom:8px">Krátké video / promo</div>
         <div style="border-radius:10px;overflow:hidden;background:#000;height:190px;display:flex;align-items:center;justify-content:center;">
           <!-- Placeholder: embed YouTube or promo screenshot -->
-          <a href="https://www.youtube.com/@0lynex0" target="_blank" style="color:#fff;text-decoration:none">YouTube @0lynex0</a>
+          <button class="btn" data-href="https://www.youtube.com/@0lynex0">YouTube @0lynex0</button>
         </div>
       </div>
     </aside>
@@ -169,7 +186,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
     <aside class="highlights">
       <div class="highlight">
         <strong>Rychlé odkazy</strong>
-        <div style="margin-top:6px"><a href="#rules">Pravidla</a> • <a href="#recruit">Nábor</a> • <a href="#faq">FAQ</a></div>
+        <div style="margin-top:6px"><button class="nav-link" data-href="#rules">Pravidla</button> • <button class="nav-link" data-href="#recruit">Nábor</button> • <button class="nav-link" data-href="#faq">FAQ</button></div>
       </div>
       <div class="highlight">
         <strong>Kontakt</strong>
@@ -192,26 +209,41 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 <footer>
   <div style="margin-bottom:12px">Sleduj nás</div>
   <div class="social-icons">
-    <a class="icon" href="https://discord.gg/NmK5jaGjQW" target="_blank" aria-label="Discord" rel="noopener"> 
+    <button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
       <!-- Discord SVG -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 3L4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3Z" fill="none" stroke="#fff" stroke-opacity="0.9" stroke-width="0.7"/><path d="M7.5 14.7C8.1 14.7 8.6 14.3 8.6 13.8C8.6 13.3 8.1 12.9 7.5 12.9C6.9 12.9 6.4 13.3 6.4 13.8C6.4 14.3 6.9 14.7 7.5 14.7Z" fill="#fff"/><path d="M16.5 14.7C17.1 14.7 17.6 14.3 17.6 13.8C17.6 13.3 17.1 12.9 16.5 12.9C15.9 12.9 15.4 13.3 15.4 13.8C15.4 14.3 15.9 14.7 16.5 14.7Z" fill="#fff"/></svg>
-    </a>
+    </button>
 
-    <a class="icon" href="https://www.youtube.com/@0lynex0" target="_blank" aria-label="YouTube" rel="noopener">
+    <button class="icon-btn" aria-label="YouTube" onclick="window.open('https://www.youtube.com/@0lynex0','_blank')">
       <!-- YouTube SVG -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="3" stroke="#fff" stroke-opacity="0.9" stroke-width="0.7" fill="none"/><path d="M10 9L15 12L10 15V9Z" fill="#fff"/></svg>
-    </a>
+    </button>
 
-    <a class="icon" href="https://nxsrp.mysellauth.com" target="_blank" aria-label="Store" rel="noopener">
+    <button class="icon-btn" aria-label="Store" onclick="window.open('https://nxsrp.mysellauth.com','_blank')">
       <!-- Shop SVG -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7L3 7" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9"/><path d="M21 7H7L6 19H21V7Z" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9" fill="none"/><path d="M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9"/></svg>
-    </a>
+    </button>
   </div>
 
   <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
 </footer>
 
   </div>  <script>
+    // unify button navigation: buttons with data-href act like links
+    document.querySelectorAll('[data-href]').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const href = btn.getAttribute('data-href');
+        if(!href) return;
+        if(href.startsWith('#')){
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        } else {
+          // external - open in new tab
+          window.open(href,'_blank');
+        }
+      });
+    });
+
     // Mobile menu toggle
     const menuBtn = document.querySelector('.menu-btn');
     menuBtn && menuBtn.addEventListener('click', ()=>{
