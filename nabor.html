@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NXSRP — Nábor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#040006;
+      --neon-1:#b87bff;
+      --neon-2:#7a3bff;
+      --neon-green:#39ff14;
+      --neon-green-glow:0 0 18px rgba(57,255,20,0.8),0 0 48px rgba(57,255,20,0.4);
+      --glass: rgba(255,255,255,0.03);
+      --accent-glow: 0 12px 50px rgba(186,123,255,0.12), 0 0 40px rgba(122,59,255,0.06);
+      --radius:16px;
+      --max-width:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}
+
+    /* Background blobs */
+    .bg-blob{position:fixed;pointer-events:none;filter:blur(100px) saturate(120%);mix-blend-mode:screen;opacity:0.9;transform:translate3d(0,0,0)}
+    .blob-1{width:720px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(184,123,255,0.28), rgba(122,59,255,0.14) 40%, transparent 60%);left:-120px;top:-80px;animation:blobMove1 18s ease-in-out infinite}
+    .blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
+    .blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(57,255,20,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
+
+    @keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
+    @keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+    @keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
+
+    .container{position:relative;z-index:2;max-width:var(--max-width);margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
+    .brand h1{margin:0;font-size:20px}
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-link{appearance:none;border:0;background:transparent;color:#efeaff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+    .store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
+
+    .hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;place-items:center;min-height:400px;text-align:center}
+    .hero-content{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04);backdrop-filter:blur(6px);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .hero-content h2{font-size:36px;color:var(--neon-1);margin:0}
+    .status{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+    .status-dot{width:16px;height:16px;border-radius:50%;display:inline-block}
+    .status-text{font-size:20px;font-weight:700}
+
+    .status.active .status-dot{background:var(--neon-green);box-shadow:var(--neon-green-glow);color:var(--neon-green)}
+    .status.active .status-text{color:var(--neon-green);text-shadow:0 0 10px rgba(57,255,20,0.6)}
+
+    .status.inactive .status-dot{background:#555;box-shadow:none}
+    .status.inactive .status-text{color:#777}
+
+    footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#e8e4ff}
+    .social-icons{display:flex;gap:14px;justify-content:center;align-items:center}
+    .icon-btn{appearance:none;border:0;cursor:pointer;width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);color:#fff}
+
+    @media (max-width:980px){
+      nav{display:none}
+    }
+    @media (max-width:560px){
+      .container{margin:12px;padding:12px}
+      .hero-content h2{font-size:28px}
+      .status-text{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="https://cdn.discordapp.com/attachments/1432777754017005598/1438563325972578334/nexusresized.png" class="logo">
+        <div>
+          <h1>NXSRP</h1>
+          <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
+        </div>
+      </div>
+      <nav aria-label="Hlavní menu">
+        <button class="nav-link" data-href="index.html">Home</button>
+        <button class="nav-link" data-href="nabor.html">Nábor</button>
+        <button class="nav-link" data-href="#rules">Pravidla</button>
+        <button class="nav-link" data-href="#faq">FAQ</button>
+        <button class="nav-link store" data-href="https://nxsrp.mysellauth.com">Store</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Nábor do NXSRP</h2>
+          <!-- Toggle nábor: active = nabíráme, inactive = nenabíráme -->
+          <div class="status active">
+            <span class="status-dot"></span>
+            <span class="status-text">Aktuálně nabíráme!</span>
+          </div>
+          <!-- Pro neaktivní stav použij:
+          <div class="status inactive">
+            <span class="status-dot"></span>
+            <span class="status-text">Momentálně nenabíráme</span>
+          </div>
+          -->
+          <p style="margin-top:16px;color:#d8d0ff;opacity:0.9;">Pokud máš zájem, připoj se na náš Discord a zjisti více informací.</p>
+          <button class="btn" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">Připojit se na Discord</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="margin-bottom:12px">Sleduj nás</div>
+      <div class="social-icons">
+        <button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">D</button>
+        <button class="icon-btn" aria-label="YouTube" onclick="window.open('https://www.youtube.com/@0lynex0','_blank')">Y</button>
+        <button class="icon-btn" aria-label="Store" onclick="window.open('https://nxsrp.mysellauth.com','_blank')">S</button>
+      </div>
+      <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
+    </footer>
+  </div>
+
+  <script>
+    // unify button navigation
+    document.querySelectorAll('[data-href]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const href = btn.getAttribute('data-href');
+        if(!href) return;
+        if(href.startsWith('#')){
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        } else {
+          window.open(href,'_blank');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
