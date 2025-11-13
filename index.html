@@ -115,6 +115,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   transition: transform 0.1s ease-out;
   backdrop-filter: blur(4px);
   z-index: 9999;
+  box-shadow: 0 0 10px rgba(180, 100, 255, 0.7);
 }
 
 
@@ -265,10 +266,25 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
     });
 
     const dot = document.querySelector('.cursor-dot');
+    let x = 0, y = 0;
+    let targetX = 0, targetY = 0;
+
+    const offsetX = -6; // posun doleva
+    const offsetY = -2; // lehce nahoru
 
     window.addEventListener('mousemove', e => {
-      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      targetX = e.clientX + offsetX;
+      targetY = e.clientY + offsetY;
     });
+
+    function animate() {
+      x += (targetX - x) * 0.15;
+      y += (targetY - y) * 0.15;
+      dot.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
 
     // Mobile menu toggle
     const menuBtn = document.querySelector('.menu-btn');
