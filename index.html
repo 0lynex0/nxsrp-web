@@ -8,93 +8,93 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#050005;
-      --neon-1: #9b59ff; /* primary purple */
-      --neon-2: #5b2cff; /* deeper */
+      --bg:#040006;
+      --neon-1:#b87bff;
+      --neon-2:#7a3bff;
       --glass: rgba(255,255,255,0.03);
-      --accent-glow: 0 6px 30px rgba(155,89,255,0.16), 0 0 30px rgba(91,44,255,0.06);
-      --radius: 14px;
-      --max-width:1200px;
+      --accent-glow: 0 12px 50px rgba(186,123,255,0.12), 0 0 40px rgba(122,59,255,0.06);
+      --radius:16px;
+      --max-width:1180px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e9e7ff;background:linear-gradient(180deg,var(--bg),#020003);}/* NAV */
-.wrap{max-width:var(--max-width);margin:40px auto;padding:20px}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:radial-gradient(1200px 600px at 10% 10%, rgba(186,123,255,0.06), transparent), radial-gradient(1000px 500px at 90% 90%, rgba(122,59,255,0.03), transparent), var(--bg);}.container{max-width:var(--max-width);margin:28px auto;padding:18px}
+
+/* Header */
 header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;box-shadow:var(--accent-glow)}
-.brand h1{margin:0;font-size:20px;letter-spacing:1px}
-nav{display:flex;gap:14px}
-nav a{color:#dcd6ff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
-nav a.store{background:linear-gradient(90deg,rgba(155,89,255,0.12),rgba(91,44,255,0.06));box-shadow:0 8px 30px rgba(91,44,255,0.04)}
-.cta{display:flex;gap:8px}
-.btn{padding:8px 14px;border-radius:10px;background:transparent;border:1px solid rgba(155,89,255,0.14);color:#e8e4ff;font-weight:600;backdrop-filter: blur(4px)}
+.logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
+.brand h1{margin:0;font-size:20px}
+nav{display:flex;gap:12px;align-items:center}
+nav a{color:#efeaff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+.store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
 
-/* HERO */
-.hero{margin-top:28px;padding:32px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(155,89,255,0.04), rgba(91,44,255,0.02));box-shadow:var(--accent-glow);display:grid;grid-template-columns:1fr 420px;gap:24px}
-.server-title{align-self:center}
-.server-title h2{font-size:44px;margin:0 0 8px;color:linear-gradient(90deg,var(--neon-1),var(--neon-2))}
-.server-title p{margin:0 0 18px;color:#bfb8ff;opacity:0.95}
+/* Mobile menu */
+.menu-btn{display:none;border:1px solid rgba(255,255,255,0.04);background:transparent;padding:8px;border-radius:10px}
 
-/* neon text effect */
-.neon{font-weight:800;color:var(--neon-1);text-shadow:0 0 18px rgba(155,89,255,0.25),0 0 46px rgba(91,44,255,0.12)}
+/* Hero */
+.hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:1fr 420px;gap:18px}
+.hero-left{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04)}
+.hero-right{padding:20px;background:linear-gradient(180deg, rgba(184,123,255,0.03), rgba(122,59,255,0.02));border:1px solid rgba(184,123,255,0.04);display:flex;flex-direction:column;justify-content:center;align-items:center}
 
-.server-stats{display:flex;gap:12px}
-.stat{background:var(--glass);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);min-width:110px;text-align:center}
-.stat b{display:block;font-size:20px}
-.join{margin-top:18px}
-.join a{display:inline-block;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(155,89,255,0.16)}
+.hero h2{font-size:44px;margin:0 0 8px;color:var(--neon-1);text-shadow:0 6px 40px rgba(184,123,255,0.08)}
+.lead{color:#e9e4ff;opacity:0.95;font-size:16px;margin-bottom:18px}
 
-/* NEWS */
-.news{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(155,89,255,0.06);min-height:120px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .32s ease, box-shadow .32s ease}
-.card:hover{transform:translateY(-8px);box-shadow:var(--accent-glow)}
-.card h3{margin:0 0 8px;font-size:18px}
-.card p{margin:0;color:#cfc7ff;font-size:14px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:white;font-weight:700;text-decoration:none;box-shadow:0 10px 40px rgba(122,59,255,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(184,123,255,0.12);color:#efeaff}
 
-/* GALLERY */
-.gallery{margin-top:36px;border-radius:12px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(155,89,255,0.03)}
+/* News feed */
+.news{margin-top:20px;display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.news-list{display:flex;flex-direction:column;gap:12px}
+.news-item{padding:14px;border-radius:12px;background:rgba(255,255,255,0.016);border:1px solid rgba(184,123,255,0.04);transition:transform .28s ease}
+.news-item:hover{transform:translateY(-6px);box-shadow:var(--accent-glow)}
+.news-item h3{margin:0 0 6px}
+.news-item p{margin:0;color:#d8d0ff}
+
+/* Right column - quick links / highlights */
+.highlights{display:flex;flex-direction:column;gap:12px}
+.highlight{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border:1px solid rgba(184,123,255,0.03)}
+
+/* Gallery */
+.gallery{margin-top:26px;border-radius:12px;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.01));border:1px solid rgba(184,123,255,0.03)}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.thumb{height:120px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02)}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.05) contrast(1.02)}
-.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.18));opacity:0;transition:opacity .2s}
-.thumb:hover:after{opacity:1}
+.thumb{height:140px;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02)}
+.thumb img{width:100%;height:100%;object-fit:cover}
 
-/* footer */
-footer{margin-top:30px;padding:18px;border-radius:12px;text-align:center;color:#d8d2ff;opacity:0.9}
-.links{display:flex;gap:12px;justify-content:center;margin-top:10px}
-.social{padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(155,89,255,0.06),rgba(91,44,255,0.03));text-decoration:none;color:#f4f0ff;font-weight:700}
+/* Footer with icons */
+footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#e8e4ff}
+.social-icons{display:flex;gap:14px;justify-content:center;align-items:center}
+.icon{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);text-decoration:none;color:#fff}
 
 /* responsive */
 @media (max-width:980px){
-  .hero{grid-template-columns:1fr;}
-  .news{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr}
+  .news{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+  .menu-btn{display:inline-block}
 }
 @media (max-width:560px){
-  nav{display:none}
-  header{gap:8px}
-  .wrap{margin:18px}
-  .news{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:repeat(1,1fr)}
+  .container{margin:12px;padding:12px}
+  .hero-left{padding:18px}
+  .hero h2{font-size:28px}
+  .gallery-grid{grid-template-columns:1fr}
 }
 
 /* small animations */
-.floaty{animation:floaty 6s ease-in-out infinite}
-@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
-
-.glow-border{position:relative}
-.glow-border:before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(120deg,transparent 0, rgba(155,89,255,0.08) 20%, transparent 50%);filter:blur(18px);opacity:0.7;z-index:-1}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="container">
     <header>
       <div class="brand">
         <div class="logo">NX</div>
         <div>
-          <h1 class="neon">NXSRP</h1>
-          <div style="font-size:12px;color:#cfc7ff;opacity:0.9">FiveM roleplay server • nxsrp.cz</div>
+          <h1>NXSRP</h1>
+          <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
         </div>
       </div><nav aria-label="Hlavní menu">
     <a href="#home">Home</a>
@@ -104,106 +104,134 @@ footer{margin-top:30px;padding:18px;border-radius:12px;text-align:center;color:#
     <a class="store" href="https://nxsrp.mysellauth.com" target="_blank" rel="noopener">Store</a>
   </nav>
 
-  <div class="cta">
-    <a class="btn" href="https://discord.gg/NmK5jaGjQW" target="_blank">Připojit se (Discord)</a>
+  <div>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    <button class="btn" onclick="location.href='https://discord.gg/NmK5jaGjQW'">Discord</button>
   </div>
 </header>
 
-<section class="hero glow-border" id="home">
-  <div class="server-title">
-    <h2 class="neon">Vítej na NXSRP</h2>
-    <p>Moderní český roleplay server postavený pro kvalitní RP zážitky. Aktuální verze, komunitní eventy a aktivity.</p>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <h2>Vítej na <span style="color:var(--neon-2)">NXSRP</span></h2>
+      <p class="lead">Komunita zaměřená na kvalitní roleplay, pravidelné eventy a přátelské prostředí. Přidej se k nám přes Discord nebo zjisti víc níže.</p>
 
-    <div class="server-stats">
-      <div class="stat">
-        <div style="font-size:12px;color:#cfc7ff">Online</div>
-        <b>24/200</b>
-        <small style="color:#b8b0ff;display:block">Aktuální hráči</small>
+      <div class="actions">
+        <a class="btn" href="https://discord.gg/NmK5jaGjQW" target="_blank">Připojit se</a>
+        <a class="btn ghost" href="#news">Poslední novinky</a>
+        <a class="btn ghost" href="https://nxsrp.mysellauth.com" target="_blank">Obchod</a>
       </div>
-      <div class="stat">
-        <div style="font-size:12px;color:#cfc7ff">Verze</div>
-        <b>1.0.3</b>
-        <small style="color:#b8b0ff;display:block">Stabilní build</small>
-      </div>
-      <div class="stat">
-        <div style="font-size:12px;color:#cfc7ff">IP</div>
-        <b>nxsrp.cz</b>
-        <small style="color:#b8b0ff;display:block">Připoj se přes FiveM</small>
-      </div>
-    </div>
 
-    <div class="join">
-      <a href="https://discord.gg/NmK5jaGjQW" target="_blank">Připoj se na Discord</a>
-    </div>
-  </div>
-
-  <aside style="align-self:center">
-    <div style="padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(155,89,255,0.06),rgba(91,44,255,0.02));box-shadow:var(--accent-glow)">
-      <h4 style="margin:0 0 8px">Poslední update</h4>
-      <div style="font-size:14px;color:#efeaff">Nová práce LSPD, opravy economy systému a event v neděli 20:00.</div>
-      <div style="margin-top:10px;text-align:right">
-        <a class="btn" href="#news" style="text-decoration:none">Více</a>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(184,123,255,0.03)">
+          <strong>Aktuální události</strong>
+          <div style="font-size:13px;color:#d8d0ff">Event v neděli — roleplay závody</div>
+        </div>
+        <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(184,123,255,0.03)">
+          <strong>Tip pro nové hráče</strong>
+          <div style="font-size:13px;color:#d8d0ff">Přečti si pravidla a úvodní guide v sekci FAQ</div>
+        </div>
       </div>
     </div>
-  </aside>
-</section>
 
-<h3 style="margin-top:26px;color:#e9e4ff">Novinky</h3>
-<div class="news" id="news">
-  <article class="card">
-    <div>
-      <h3>Event: Návštěva prezidenta</h3>
-      <p>Večer roleplay event s VIP hostem. Příprava mise a odměny pro nejlepší RP momenty.</p>
+    <aside class="hero-right">
+      <div style="width:100%;max-width:340px;text-align:center">
+        <div style="font-size:13px;color:#efeaff;margin-bottom:8px">Krátké video / promo</div>
+        <div style="border-radius:10px;overflow:hidden;background:#000;height:190px;display:flex;align-items:center;justify-content:center;">
+          <!-- Placeholder: embed YouTube or promo screenshot -->
+          <a href="https://www.youtube.com/@0lynex0" target="_blank" style="color:#fff;text-decoration:none">YouTube @0lynex0</a>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="news" id="news">
+    <div class="news-list">
+      <div class="news-item">
+        <h3>Event: Prezidentův den</h3>
+        <p>Speciální RP event s misemi a odměnami pro zapojené hráče. Více informací na Discordu.</p>
+        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">12. listopadu 2025</div>
+      </div>
+
+      <div class="news-item">
+        <h3>Nová práce: Mechanik</h3>
+        <p>Práce obsahuje nové mini-hry pro opravu vozidel a výplaty podle výkonu.</p>
+        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">4. listopadu 2025</div>
+      </div>
+
+      <div class="news-item">
+        <h3>Economy update</h3>
+        <p>Optimalizace systému bank a frakcí; méně rollbacků a rychlejší transakce.</p>
+        <div style="margin-top:8px;font-size:12px;color:#d0c8ff">28. října 2025</div>
+      </div>
     </div>
-    <div style="font-size:12px;color:#c8bfff">12. listopadu 2025</div>
-  </article>
 
-  <article class="card">
-    <div>
-      <h3>Nová práce: Mechanik</h3>
-      <p>Přidaná práce mechanika s vlastním blipem a mini-hry pro opravu vozidel.</p>
+    <aside class="highlights">
+      <div class="highlight">
+        <strong>Rychlé odkazy</strong>
+        <div style="margin-top:6px"><a href="#rules">Pravidla</a> • <a href="#recruit">Nábor</a> • <a href="#faq">FAQ</a></div>
+      </div>
+      <div class="highlight">
+        <strong>Kontakt</strong>
+        <div style="margin-top:6px;color:#d8d0ff">Připoj se na Discord pro support a pomoc</div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="gallery" aria-label="Galerie">
+    <h3 style="margin:0 0 12px;color:#efeaff">Galerie z eventů</h3>
+    <div class="gallery-grid" id="gallery">
+      <div class="thumb"><img src="https://picsum.photos/seed/nx1/800/600" alt="Screenshot 1"></div>
+      <div class="thumb"><img src="https://picsum.photos/seed/nx2/800/600" alt="Screenshot 2"></div>
+      <div class="thumb"><img src="https://picsum.photos/seed/nx3/800/600" alt="Screenshot 3"></div>
+      <div class="thumb"><img src="https://picsum.photos/seed/nx4/800/600" alt="Screenshot 4"></div>
     </div>
-    <div style="font-size:12px;color:#c8bfff">4. listopadu 2025</div>
-  </article>
-
-  <article class="card">
-    <div>
-      <h3>Economy update</h3>
-      <p>Optimalizace bankovních transakcí a fixy pro opravy pokladen ve frakcích.</p>
-    </div>
-    <div style="font-size:12px;color:#c8bfff">28. října 2025</div>
-  </article>
-</div>
-
-<section class="gallery" aria-label="Galerie">
-  <h3 style="margin:0 0 12px;color:#e9e4ff">Galerie — z minulých eventů</h3>
-  <div class="gallery-grid" id="gallery">
-    <!-- Placeholder images; replace with real screenshots -->
-    <div class="thumb"><img src="https://picsum.photos/seed/nx1/800/600" alt="Screenshot 1"></div>
-    <div class="thumb"><img src="https://picsum.photos/seed/nx2/800/600" alt="Screenshot 2"></div>
-    <div class="thumb"><img src="https://picsum.photos/seed/nx3/800/600" alt="Screenshot 3"></div>
-    <div class="thumb"><img src="https://picsum.photos/seed/nx4/800/600" alt="Screenshot 4"></div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
-  <div>Kontakt a odkazy</div>
-  <div class="links">
-    <a class="social" href="https://discord.gg/NmK5jaGjQW" target="_blank" rel="noopener">Discord</a>
-    <a class="social" href="https://www.youtube.com/@0lynex0" target="_blank" rel="noopener">YouTube @0lynex0</a>
-    <a class="social" href="https://nxsrp.mysellauth.com" target="_blank" rel="noopener">Store</a>
+  <div style="margin-bottom:12px">Sleduj nás</div>
+  <div class="social-icons">
+    <a class="icon" href="https://discord.gg/NmK5jaGjQW" target="_blank" aria-label="Discord" rel="noopener"> 
+      <!-- Discord SVG -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 3L4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3Z" fill="none" stroke="#fff" stroke-opacity="0.9" stroke-width="0.7"/><path d="M7.5 14.7C8.1 14.7 8.6 14.3 8.6 13.8C8.6 13.3 8.1 12.9 7.5 12.9C6.9 12.9 6.4 13.3 6.4 13.8C6.4 14.3 6.9 14.7 7.5 14.7Z" fill="#fff"/><path d="M16.5 14.7C17.1 14.7 17.6 14.3 17.6 13.8C17.6 13.3 17.1 12.9 16.5 12.9C15.9 12.9 15.4 13.3 15.4 13.8C15.4 14.3 15.9 14.7 16.5 14.7Z" fill="#fff"/></svg>
+    </a>
+
+    <a class="icon" href="https://www.youtube.com/@0lynex0" target="_blank" aria-label="YouTube" rel="noopener">
+      <!-- YouTube SVG -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="3" stroke="#fff" stroke-opacity="0.9" stroke-width="0.7" fill="none"/><path d="M10 9L15 12L10 15V9Z" fill="#fff"/></svg>
+    </a>
+
+    <a class="icon" href="https://nxsrp.mysellauth.com" target="_blank" aria-label="Store" rel="noopener">
+      <!-- Shop SVG -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7L3 7" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9"/><path d="M21 7H7L6 19H21V7Z" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9" fill="none"/><path d="M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7" stroke="#fff" stroke-opacity="0.9" stroke-width="0.9"/></svg>
+    </a>
   </div>
-  <div style="margin-top:12px;font-size:13px;color:#bfb8ff;opacity:0.8">© NXSRP — všechna práva vyhrazena</div>
+
+  <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
 </footer>
 
   </div>  <script>
-    // Basic interactivity: gallery lightbox
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      const nav = document.querySelector('nav');
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        nav.style.display='flex';nav.style.position='absolute';nav.style.right='18px';nav.style.top='78px';nav.style.flexDirection='column';nav.style.background='rgba(0,0,0,0.6)';nav.style.padding='12px';nav.style.backdropFilter='blur(6px)';nav.style.borderRadius='10px';
+      } else {
+        nav.style.display='none';
+      }
+    });
+
+    // Simple lightbox for gallery
     document.querySelectorAll('.thumb img').forEach(img=>{
       img.addEventListener('click', ()=>{
         const src = img.src;
         const modal = document.createElement('div');
-        modal.style.position='fixed';modal.style.inset=0;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.background='rgba(0,0,0,0.7)';modal.style.zIndex=9999;
-        modal.innerHTML = `\n          <div style="max-width:90%;max-height:90%">\n            <img src="${src}" style="width:100%;height:auto;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,0.6)">\n          </div>`;
+        modal.style.position='fixed';modal.style.inset=0;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.background='rgba(0,0,0,0.8)';modal.style.zIndex=9999;
+        modal.innerHTML = `<div style="max-width:90%;max-height:90%"><img src="${src}" style="width:100%;height:auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.7)"></div>`;
         modal.addEventListener('click', ()=>modal.remove());
         document.body.appendChild(modal);
       });
