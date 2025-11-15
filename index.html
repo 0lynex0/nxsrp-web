@@ -358,17 +358,17 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 </footer>
 
   </div>  <script>
-    // unify button navigation: buttons with data-href act like links
-    document.querySelectorAll('[data-href]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
+    // unify button navigation
+    document.querySelectorAll('[data-href]').forEach(btn => {
+      btn.addEventListener('click', () => {
         const href = btn.getAttribute('data-href');
         if(!href) return;
         if(href.startsWith('#')){
           const el = document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
         } else {
-          // external - open in new tab
-          window.open(href,'_blank');
+          // otevře stránku ve stejném okně
+          window.location.href = href;
         }
       });
     });

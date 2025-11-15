@@ -184,17 +184,17 @@
   </div>
 
   <script>
-    // unify button navigation (data-href)
-    document.querySelectorAll('[data-href]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
+    // unify button navigation
+    document.querySelectorAll('[data-href]').forEach(btn => {
+      btn.addEventListener('click', () => {
         const href = btn.getAttribute('data-href');
         if(!href) return;
         if(href.startsWith('#')){
           const el = document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
         } else {
-          // open in new tab (kept původní chování)
-          window.open(href,'_blank');
+          // otevře stránku ve stejném okně
+          window.location.href = href;
         }
       });
     });
