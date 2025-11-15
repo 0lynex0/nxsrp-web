@@ -1,140 +1,56 @@
-<section class="hero">
-  <div class="hero-content">
-    <h2>Nábor do NXSRP</h2>
-    <p style="margin-top:8px;color:#d8d0ff;opacity:0.9;">
-      Vyber si pozici a zjisti více informací.
-    </p>
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NXSRP — Nábor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#040006;
+      --neon-1:#b87bff;
+      --neon-2:#7a3bff;
+      --neon-green:#39ff14;
+      --neon-green-glow:0 0 18px rgba(57,255,20,0.8),0 0 48px rgba(57,255,20,0.4);
+      --glass: rgba(255,255,255,0.03);
+      --accent-glow: 0 12px 50px rgba(186,123,255,0.12), 0 0 40px rgba(122,59,255,0.06);
+      --radius:16px;
+      --max-width:1180px;
+      --discord:#5865F2;
+      --youtube:#FF0000;
+      --store:#5A5A5A;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}
 
-    <div class="jobs-grid">
-      <!-- Příklad jedné pozice -->
-      <div class="job-card">
-        <div class="job-header">
-          <h3>Policie LSPD</h3>
-          <div class="status active">
-            <span class="status-dot"></span>
-            <span class="status-text">Nabíráme</span>
-          </div>
-        </div>
-        <p class="job-desc">
-          Přidej se k městské policii a pomáhej udržovat pořádek na ulicích Los Santos.
-        </p>
-        <div class="job-tags">
-          <span>18+</span>
-          <span>Aktivní mikrofon</span>
-          <span>RP zkušenosti</span>
-        </div>
-      </div>
+    /* Background blobs */
+    .bg-blob{position:fixed;pointer-events:none;filter:blur(100px) saturate(120%);mix-blend-mode:screen;opacity:0.9;transform:translate3d(0,0,0)}
+    .blob-1{width:720px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(184,123,255,0.28), rgba(122,59,255,0.14) 40%, transparent 60%);left:-120px;top:-80px;animation:blobMove1 18s ease-in-out infinite}
+    .blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
+    .blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(57,255,20,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
 
-      <div class="job-card">
-        <div class="job-header">
-          <h3>Zdravotní služba EMS</h3>
-          <div class="status inactive">
-            <span class="status-dot"></span>
-            <span class="status-text">Momentálně nenabíráme</span>
-          </div>
-        </div>
-        <p class="job-desc">
-          Poskytuj první pomoc a záchranu obyvatelům města. Naučíme tě všechny postupy.
-        </p>
-        <div class="job-tags">
-          <span>16+</span>
-          <span>RP zkušenosti</span>
-        </div>
-      </div>
+    @keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
+    @keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+    @keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
 
-      <div class="job-card">
-        <div class="job-header">
-          <h3>Mechanik / Garáže</h3>
-          <div class="status active">
-            <span class="status-dot"></span>
-            <span class="status-text">Nabíráme</span>
-          </div>
-        </div>
-        <p class="job-desc">
-          Opravuj vozidla hráčů, rozšiřuj servis a pomáhej udržovat město v chodu.
-        </p>
-        <div class="job-tags">
-          <span>16+</span>
-          <span>Technické znalosti</span>
-          <span>Motorka / Auto</span>
-        </div>
-      </div>
+    .container{position:relative;z-index:2;max-width:var(--max-width);margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
+    .brand h1{margin:0;font-size:20px}
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-link{appearance:none;border:0;background:transparent;color:#efeaff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+    .store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
 
-    </div>
+    .hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;place-items:center;min-height:400px;text-align:center}
+    .hero-content{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04);backdrop-filter:blur(6px);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:880px}
+    .hero-content h2{font-size:36px;color:var(--neon-1);margin:0}
+    .status{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+    .status-dot{width:16px;height:16px;border-radius:50%;display:inline-block}
+    .status-text{font-size:20px;font-weight:700}
 
-    <button class="btn btn--discord" aria-label="Připojit se na Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
-      <img class="btn-icon" src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" alt="discord">
-      Připojit se na Discord
-    </button>
-  </div>
-</section>
-
-<style>
-.jobs-grid {
-  display: grid;
-  gap: 18px;
-  margin-top: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-}
-
-.job-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(184,123,255,0.04);
-  backdrop-filter: blur(6px);
-  border-radius: 16px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.job-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--accent-glow);
-}
-
-.job-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.job-header h3 {
-  margin: 0;
-  font-size: 20px;
-  color: var(--neon-1);
-}
-
-.job-desc {
-  margin: 0;
-  font-size: 14px;
-  color: #d8d0ff;
-  opacity: 0.9;
-}
-
-.job-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.job-tags span {
-  background: rgba(57,255,20,0.12);
-  color: var(--neon-green);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 10px;
-  text-shadow:
-    0 0 4px rgba(57,255,20,0.6);
-}
-
-.status.active .status-dot {
-  background: var(--neon-green);
-  box-shadow: var(--neon-green-glow);
-}
-
-.status.active .status-text {
+    .status.active .status-dot{background:var(--neon-green);box-shadow:var(--neon-green-glow);color:var(--neon-green)}
+    .status.active .status-text {
   color: var(--neon-green);
   text-shadow:
     0 0 8px rgba(57,255,20,0.9),
@@ -143,13 +59,238 @@
     0 0 40px rgba(57,255,20,0.35);
 }
 
-.status.inactive .status-dot {
-  background: #555;
-  box-shadow: none;
-}
 
-.status.inactive .status-text {
-  color: #777;
-  text-shadow: none;
-}
-</style>
+    .status.inactive .status-dot{background:#555;box-shadow:none}
+    .status.inactive .status-text{color:#777}
+
+    footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#e8e4ff}
+    .social-icons{display:flex;gap:14px;justify-content:center;align-items:center}
+    .icon-btn{appearance:none;border:0;cursor:pointer;width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);color:#fff;transition:transform .12s ease, box-shadow .12s ease}
+    .icon-btn:active{transform:translateY(1px)}
+    .icon-btn:hover{transform:translateY(-3px); box-shadow:var(--accent-glow)}
+
+    /* Ensure external PNG icons are white (invert) and fit nicely */
+    .icon-img{width:22px;height:22px;object-fit:contain;display:block;filter:invert(1) grayscale(1) brightness(1.4);}
+
+    /* BUTTON styles - ensure they apply and look nice */
+    .btn{
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      justify-content:center;
+      border:0;
+      padding:12px 18px;
+      border-radius:12px;
+      background:linear-gradient(90deg,var(--neon-1),var(--neon-2));
+      color:white;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 10px 40px rgba(122,59,255,0.12);
+      cursor:pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+      font-size:15px;
+      line-height:1;
+    }
+    .btn:focus{outline:3px solid rgba(184,123,255,0.12);outline-offset:2px}
+    .btn:hover{transform:translateY(-3px) scale(1.02); box-shadow:var(--accent-glow)}
+    .btn:active{transform:translateY(0) scale(0.995)}
+
+    /* Optional brandy discord-styled button (icon on left) */
+    .btn--discord{background:linear-gradient(90deg,var(--discord),#4655d9);box-shadow:0 12px 40px rgba(88,101,242,0.12)}
+    .btn--youtube{background:linear-gradient(90deg,var(--youtube),#cc0000)}
+    .btn--ghost{background:transparent;border:1px solid rgba(184,123,255,0.12);color:#efeaff}
+
+    /* small icon inside hero button */
+    .btn .btn-icon{width:18px;height:18px;display:inline-block;object-fit:contain;filter:invert(1) grayscale(1) brightness(1.2)}
+
+    @media (max-width:980px){
+      nav{display:none}
+    }
+    @media (max-width:560px){
+      .container{margin:12px;padding:12px}
+      .hero-content h2{font-size:28px}
+      .status-text{font-size:18px}
+      .hero{min-height:360px}
+    }
+
+    .jobs-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    .job-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(184,123,255,0.04);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(122,59,255,0.12);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .job-header h3 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--neon-1);
+    }
+
+    .job-desc {
+      font-size: 14px;
+      color: #d8d0ff;
+      opacity: 0.9;
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .job-tags span {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      background: rgba(184,123,255,0.12);
+      color: #efeaff;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="https://cdn.discordapp.com/attachments/1432777754017005598/1438563325972578334/nexusresized.png" class="logo" alt="NXSRP logo">
+        <div>
+          <h1>NXSRP</h1>
+          <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
+        </div>
+      </div>
+      <nav aria-label="Hlavní menu">
+        <button class="nav-link" data-href="index.html">Home</button>
+        <button class="nav-link" data-href="pravidla.html">Pravidla</button>
+        <button class="nav-link" data-href="nabor.html">Nábor</button>
+        <button class="nav-link" data-href="faq.html">FAQ</button>
+        <button class="nav-link store" data-href="https://nxsrp.mysellauth.com">Store</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+  <div class="hero-content">
+    <h2>Nábor do NXSRP</h2>
+    <p style="margin-top:8px;color:#d8d0ff;opacity:0.9;">
+      Vyber si pozici a zjisti více informací.
+    </p>
+
+    <!-- Grid pozic -->
+    <div class="jobs-grid">
+      <!-- Admin -->
+      <div class="job-card">
+        <div class="job-header">
+          <h3>Admin</h3>
+          <div class="status active">
+            <span class="status-dot"></span>
+            <span class="status-text">Nabíráme</span>
+          </div>
+        </div>
+        <p class="job-desc">
+          Spravuj server, monitoruj hráče a pomáhej udržovat kvalitu RP.
+        </p>
+        <div class="job-tags">
+          <span>18+</span>
+          <span>Discord</span>
+          <span>Zkušenosti s RP</span>
+        </div>
+      </div>
+
+      <!-- Developer -->
+      <div class="job-card">
+        <div class="job-header">
+          <h3>Developer</h3>
+          <div class="status inactive">
+            <span class="status-dot"></span>
+            <span class="status-text">Momentálně nenabíráme</span>
+          </div>
+        </div>
+        <p class="job-desc">
+          Tvoř nové skripty, zlepšuj stávající systémy a přinášej inovace.
+        </p>
+        <div class="job-tags">
+          <span>18+</span>
+          <span>Lua / JS</span>
+          <span>GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discord button -->
+    <button class="btn btn--discord" aria-label="Připojit se na Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
+      <img class="btn-icon" src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" alt="discord">
+      Připojit se na Discord
+    </button>
+  </div>
+</section>
+    </main>
+
+    <footer>
+      <div style="margin-bottom:12px">Sleduj nás</div>
+      <div class="social-icons" role="navigation" aria-label="Sleduj nás na sociálních sítích">
+        <button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
+          <img src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" class="icon-img" alt="discord">
+        </button>
+
+        <button class="icon-btn" aria-label="YouTube" onclick="window.open('https://www.youtube.com/@0lynex0','_blank')">
+          <img src="https://images.icon-icons.com/791/PNG/512/YOUTUBE_icon-icons.com_65487.png" class="icon-img" alt="youtube">
+        </button>
+
+        <button class="icon-btn" aria-label="Store" onclick="window.open('https://nxsrp.mysellauth.com','_blank')">
+          <img src="https://images.icon-icons.com/933/PNG/512/shopping-cart_icon-icons.com_72552.png" class="icon-img" alt="store">
+        </button>
+      </div>
+
+      <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
+    </footer>
+  </div>
+
+  <script>
+    // unify button navigation
+    document.querySelectorAll('[data-href]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const href = btn.getAttribute('data-href');
+        if(!href) return;
+        if(href.startsWith('#')){
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          // otevře stránku ve stejném okně
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
