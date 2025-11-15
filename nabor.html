@@ -118,9 +118,10 @@
 
     .jobs-grid {
       display: grid;
-      gap: 18px;
+      gap: 24px; /* větší mezery */
       margin-top: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* širší kartičky */
+      justify-content: center; /* vycentrování pokud je místo navíc */
     }
 
     .job-card {
@@ -128,12 +129,14 @@
       border: 1px solid rgba(184,123,255,0.04);
       backdrop-filter: blur(6px);
       border-radius: 16px;
-      padding: 18px;
+      padding: 22px; /* o něco víc padding */
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 220px; /* aby byly všechny stejně vysoké */
     }
+
     .job-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 40px rgba(122,59,255,0.12);
@@ -172,10 +175,58 @@
       color: #efeaff;
     }
 
+        body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(270deg, #6a00f4, #00d4ff, #ff5ea2, #ffd500);
+      background-size: 800% 800%;
+      animation: gradientShift 60s ease infinite;
+      opacity: 0.25;
+    }
+
+    .starfield {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.08;
+    }
+
+    .background-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0; 
+      background-image:
+        linear-gradient(90deg, rgba(184,123,255,0.25) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(122,59,255,0.25) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.6;
+      mix-blend-mode: screen;
+      animation: pulse 4s ease-in-out infinite;
+      filter: blur(0.5px)
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.8; }
+    }
+
   </style>
 </head>
 <body>
   <!-- Background blobs -->
+  <div class="starfield"></div>
+  <div class="background-grid"></div>
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
   <div class="bg-blob blob-3"></div>
@@ -199,7 +250,7 @@
     </header>
 
     <main>
-      <section class="hero">
+<section class="hero">
   <div class="hero-content">
     <h2>Nábor do NXSRP</h2>
     <p style="margin-top:8px;color:#d8d0ff;opacity:0.9;">
