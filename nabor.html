@@ -36,7 +36,7 @@
       z-index: 9999;
       box-shadow: 0 0 10px rgba(180, 100, 255, 0.7);
     }
-    
+
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}
 
@@ -398,6 +398,27 @@
         }
       });
     });
+
+    const dot = document.querySelector('.cursor-dot');
+    let x = 0, y = 0;
+    let targetX = 0, targetY = 0;
+
+    const offsetX = -6; // posun doleva
+    const offsetY = -2; // lehce nahoru
+
+    window.addEventListener('mousemove', e => {
+      targetX = e.clientX + offsetX;
+      targetY = e.clientY + offsetY;
+    });
+
+    function animate() {
+      x += (targetX - x) * 0.15;
+      y += (targetY - y) * 0.15;
+      dot.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
   </script>
 </body>
 </html>

@@ -217,6 +217,27 @@ document.querySelectorAll('.faq-card').forEach(card=>{
     card.classList.toggle('active');
   });
 });
+
+const dot = document.querySelector('.cursor-dot');
+    let x = 0, y = 0;
+    let targetX = 0, targetY = 0;
+
+    const offsetX = -6; // posun doleva
+    const offsetY = -2; // lehce nahoru
+
+    window.addEventListener('mousemove', e => {
+      targetX = e.clientX + offsetX;
+      targetY = e.clientY + offsetY;
+    });
+
+    function animate() {
+      x += (targetX - x) * 0.15;
+      y += (targetY - y) * 0.15;
+      dot.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
 </script>
 </body>
 </html>
