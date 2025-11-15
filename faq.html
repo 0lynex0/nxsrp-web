@@ -125,6 +125,35 @@ nav{display:flex;gap:12px;align-items:center}
   transform:rotate(45deg);
 }
 @media(max-width:560px){.hero-content h2{font-size:28px}}
+/* Custom Neon Scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* šířka scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* jemný průhledný track */
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-1), var(--neon-2));
+  border-radius: 12px;
+  box-shadow: 0 0 6px var(--neon-1), 0 0 12px var(--neon-2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-2), var(--neon-1));
+  box-shadow: 0 0 12px var(--neon-1), 0 0 24px var(--neon-2);
+}
+
+/* Optional: scrollbar corner for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-1) rgba(0,0,0,0.1);
+}
+
+
 </style>
 </head>
 <body>
