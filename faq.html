@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NXSRP — FAQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#040006;
+  --neon-1:#b87bff;
+  --neon-2:#7a3bff;
+  --neon-green:#39ff14;
+  --neon-green-glow:0 0 18px rgba(57,255,20,0.8),0 0 48px rgba(57,255,20,0.4);
+  --glass: rgba(255,255,255,0.03);
+  --accent-glow: 0 12px 50px rgba(186,123,255,0.12), 0 0 40px rgba(122,59,255,0.06);
+  --radius:16px;
+  --max-width:1180px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}
+
+/* Background blobs, gradient, starfield a grid - stejný jako nábor */
+.bg-blob{position:fixed;pointer-events:none;filter:blur(100px) saturate(120%);mix-blend-mode:screen;opacity:0.9;transform:translate3d(0,0,0)}
+.blob-1{width:720px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(184,123,255,0.28), rgba(122,59,255,0.14) 40%, transparent 60%);left:-120px;top:-80px;animation:blobMove1 18s ease-in-out infinite}
+.blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
+.blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(57,255,20,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
+
+@keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
+@keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+@keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulse {0%,100%{opacity:0.6}50%{opacity:0.8}}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background: linear-gradient(270deg, #6a00f4, #00d4ff, #ff5ea2, #ffd500);
+  background-size: 800% 800%;
+  animation: gradientShift 60s ease infinite;
+  opacity: 0.25;
+}
+.starfield{position:fixed;inset:0;pointer-events:none;z-index:-3;background-image:radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);background-size:40px 40px;opacity:0.08;}
+.background-grid{position:fixed;inset:0;z-index:0;background-image:linear-gradient(90deg, rgba(184,123,255,0.25) 1px, transparent 1px),linear-gradient(0deg, rgba(122,59,255,0.25) 1px, transparent 1px);background-size:60px 60px;opacity:0.6;mix-blend-mode:screen;animation:pulse 4s ease-in-out infinite;filter: blur(0.5px)}
+
+.container{position:relative;z-index:2;max-width:var(--max-width);margin:28px auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
+.brand h1{margin:0;font-size:20px}
+nav{display:flex;gap:12px;align-items:center}
+.nav-link{appearance:none;border:0;background:transparent;color:#efeaff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+.store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
+
+.hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;place-items:center;min-height:400px;text-align:center}
+.hero-content{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04);backdrop-filter:blur(6px);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:880px}
+
+.faq-grid{
+  display:grid;
+  gap:16px;
+  width:100%;
+  margin-top:20px;
+}
+.faq-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(184,123,255,0.04);
+  backdrop-filter:blur(6px);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.faq-card:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(122,59,255,0.12);}
+.faq-question{
+  padding:18px 22px;
+  font-size:18px;
+  font-weight:700;
+  color:var(--neon-1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  padding:0 22px;
+  color:#d8d0ff;
+  font-size:15px;
+  opacity:0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+.faq-card.active .faq-answer{
+  max-height:500px;
+  padding:12px 22px 18px;
+  opacity:1;
+}
+.faq-card .toggle-icon{
+  transition: transform 0.3s ease;
+}
+.faq-card.active .toggle-icon{
+  transform:rotate(45deg);
+}
+@media(max-width:560px){.hero-content h2{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="starfield"></div>
+<div class="background-grid"></div>
+<div class="bg-blob blob-1"></div>
+<div class="bg-blob blob-2"></div>
+<div class="bg-blob blob-3"></div>
+
+<div class="container">
+<header>
+  <div class="brand">
+    <img src="https://cdn.discordapp.com/attachments/1432777754017005598/1438563325972578334/nexusresized.png" class="logo" alt="NXSRP logo">
+    <div>
+      <h1>NXSRP</h1>
+      <div style="font-size:12px;opacity:0.85;color:#dcd6ff">Czech roleplay community</div>
+    </div>
+  </div>
+  <nav aria-label="Hlavní menu">
+    <button class="nav-link" data-href="index.html">Home</button>
+    <button class="nav-link" data-href="pravidla.html">Pravidla</button>
+    <button class="nav-link" data-href="nabor.html">Nábor</button>
+    <button class="nav-link" data-href="faq.html">FAQ</button>
+    <button class="nav-link store" data-href="https://nxsrp.mysellauth.com">Store</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <h2>FAQ — Často kladené otázky</h2>
+    <p style="margin-top:8px;color:#d8d0ff;opacity:0.9;">
+      Klikni na otázku pro zobrazení odpovědi.
+    </p>
+
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-question">
+          Jak se mohu připojit na server?
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Pro připojení použij adresu serveru v FiveM klientu. Ujisti se, že máš nainstalovaný potřebný launcher a Discord.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question">
+          Jaké jsou minimální požadavky pro hraní?
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Doporučujeme alespoň 8GB RAM, SSD disk a moderní grafickou kartu. S pomalejším počítačem může být zážitek omezený.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question">
+          Musím mít Discord účet?
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Ano, Discord je nutný pro komunikaci s komunitou a některé roleplay prvky.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+document.querySelectorAll('[data-href]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const href = btn.getAttribute('data-href');
+    if(!href) return;
+    if(href.startsWith('#')){
+      const el = document.querySelector(href);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      window.location.href = href;
+    }
+  });
+});
+
+// FAQ toggle
+document.querySelectorAll('.faq-card').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    card.classList.toggle('active');
+  });
+});
+</script>
+</body>
+</html>
