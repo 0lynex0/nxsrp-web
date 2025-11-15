@@ -50,7 +50,15 @@
     .status-text{font-size:20px;font-weight:700}
 
     .status.active .status-dot{background:var(--neon-green);box-shadow:var(--neon-green-glow);color:var(--neon-green)}
-    .status.active .status-text{color:var(--neon-green);text-shadow:0 0 10px rgba(57,255,20,0.6)}
+    .status.active .status-text {
+  color: var(--neon-green);
+  text-shadow:
+    0 0 8px rgba(57,255,20,0.9),
+    0 0 16px rgba(57,255,20,0.7),
+    0 0 28px rgba(57,255,20,0.5),
+    0 0 40px rgba(57,255,20,0.35);
+}
+
 
     .status.inactive .status-dot{background:#555;box-shadow:none}
     .status.inactive .status-text{color:#777}
