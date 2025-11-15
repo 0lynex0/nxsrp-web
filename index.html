@@ -202,6 +202,16 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   50% { opacity: 0.8; }
 }
 
+.icon-img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1); /* udělá ikonu bílou */
+}
+
+.icon-img:hover {
+  filter: brightness(0) saturate(100%) invert(33%) sepia(77%) saturate(700%) hue-rotate(240deg);
+}
+
 
 
   </style>
@@ -330,17 +340,18 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   <div style="margin-bottom:12px">Sleduj nás</div>
   <div class="social-icons">
     <button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
-        <img src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" alt="Discord" width="20" height="20">
+      <img src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" class="icon-img">
     </button>
 
     <button class="icon-btn" aria-label="YouTube" onclick="window.open('https://www.youtube.com/@0lynex0','_blank')">
-        <img src="https://images.icon-icons.com/791/PNG/512/YOUTUBE_icon-icons.com_65487.png" alt="YouTube" width="20" height="20">
+      <img src="https://images.icon-icons.com/791/PNG/512/YOUTUBE_icon-icons.com_65487.png" class="icon-img">
     </button>
 
     <button class="icon-btn" aria-label="Store" onclick="window.open('https://nxsrp.mysellauth.com','_blank')">
-        <img src="https://images.icon-icons.com/933/PNG/512/shopping-cart_icon-icons.com_72552.png" alt="Store" width="20" height="20">
+      <img src="https://images.icon-icons.com/933/PNG/512/shopping-cart_icon-icons.com_72552.png" class="icon-img">
     </button>
-</div>
+  </div>
+
 
 
   <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
