@@ -205,6 +205,7 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 <div class="thumb"><img src="img/screenshot2.png" alt="Screenshot 2"></div>
 <div class="thumb"><img src="img/screenshot3.png" alt="Screenshot 3"></div>
 <div class="thumb"><img src="img/screenshot4.png" alt="Screenshot 4"></div>
+<div class="thumb"><img src="img/screenshot5.png" alt="Screenshot 5"></div>
 </div>
 </section>
 </main>
@@ -212,4 +213,84 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 <footer>
 <div style="margin-bottom:12px">Sleduj nás</div>
 <div class="social-icons">
-<button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')"><img src="https://images.icon-icons.com/4040
+<button class="icon-btn" aria-label="Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
+      <img src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" class="icon-img">
+    </button>
+
+    <button class="icon-btn" aria-label="YouTube" onclick="window.open('https://www.youtube.com/@0lynex0','_blank')">
+      <img src="https://images.icon-icons.com/791/PNG/512/YOUTUBE_icon-icons.com_65487.png" class="icon-img">
+    </button>
+
+    <button class="icon-btn" aria-label="Store" onclick="window.open('https://nxsrp.mysellauth.com','_blank')">
+      <img src="https://images.icon-icons.com/933/PNG/512/shopping-cart_icon-icons.com_72552.png" class="icon-img">
+    </button>
+  </div>
+
+
+
+  <div style="margin-top:12px;font-size:13px;color:#d8d0ff;opacity:0.85">© NXSRP — všechna práva vyhrazena</div>
+</footer>
+
+  </div>  <script>
+    // unify button navigation
+    document.querySelectorAll('[data-href]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const href = btn.getAttribute('data-href');
+        if(!href) return;
+        if(href.startsWith('#')){
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          // otevře stránku ve stejném okně
+          window.location.href = href;
+        }
+      });
+    });
+
+    const dot = document.querySelector('.cursor-dot');
+    let x = 0, y = 0;
+    let targetX = 0, targetY = 0;
+
+    const offsetX = -6; // posun doleva
+    const offsetY = -2; // lehce nahoru
+
+    window.addEventListener('mousemove', e => {
+      targetX = e.clientX + offsetX;
+      targetY = e.clientY + offsetY;
+    });
+
+    function animate() {
+      x += (targetX - x) * 0.15;
+      y += (targetY - y) * 0.15;
+      dot.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      const nav = document.querySelector('nav');
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        nav.style.display='flex';nav.style.position='absolute';nav.style.right='18px';nav.style.top='78px';nav.style.flexDirection='column';nav.style.background='rgba(0,0,0,0.6)';nav.style.padding='12px';nav.style.backdropFilter='blur(6px)';nav.style.borderRadius='10px';
+      } else {
+        nav.style.display='none';
+      }
+    });
+
+    // Simple lightbox for gallery
+    document.querySelectorAll('.thumb img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        const src = img.src;
+        const modal = document.createElement('div');
+        modal.style.position='fixed';modal.style.inset=0;modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.background='rgba(0,0,0,0.8)';modal.style.zIndex=9999;
+        modal.innerHTML = `<div style="max-width:90%;max-height:90%"><img src="${src}" style="width:100%;height:auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.7)"></div>`;
+        modal.addEventListener('click', ()=>modal.remove());
+        document.body.appendChild(modal);
+      });
+    });
+  </script></body>
+</html>
