@@ -6,296 +6,10 @@
   <title>NXSRP - Nábor</title>
   <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <div class="cursor-dot"></div>
-  <style>
-    :root{
-      --bg:#040006;
-      --neon-1:#b87bff;
-      --neon-2:#7a3bff;
-      --neon-green:#39ff14;
-      --neon-green-glow:0 0 18px rgba(57,255,20,0.8),0 0 48px rgba(57,255,20,0.4);
-      --glass: rgba(255,255,255,0.03);
-      --accent-glow: 0 12px 50px rgba(186,123,255,0.12), 0 0 40px rgba(122,59,255,0.06);
-      --radius:16px;
-      --max-width:1180px;
-      --discord:#5865F2;
-      --youtube:#FF0000;
-      --store:#5A5A5A;
-    }
-    .cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 12px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 50%;
-      pointer-events: none; /* aby neblokovala klikání */
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease-out;
-      backdrop-filter: blur(4px);
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(180, 100, 255, 0.7);
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#efeaff;background:var(--bg);overflow-x:hidden}
-
-    /* Background blobs */
-    .blob-1{width:720px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(184,123,255,0.28), rgba(122,59,255,0.14) 40%, transparent 60%);left:-120px;top:-80px;animation:blobMove1 18s ease-in-out infinite}
-    .blob-2{width:600px;height:380px;background:radial-gradient(circle at 70% 40%, rgba(122,59,255,0.26), rgba(184,123,255,0.12) 40%, transparent 60%);right:-140px;bottom:-60px;animation:blobMove2 22s ease-in-out infinite}
-    .blob-3{width:420px;height:260px;background:radial-gradient(circle at 50% 50%, rgba(57,255,20,0.12), rgba(140,80,255,0.08) 40%, transparent 60%);left:50%;top:40%;transform:translateX(-40%);animation:blobMove3 26s ease-in-out infinite}
-
-    @keyframes blobMove1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,20px) scale(1.06)}100%{transform:translate(0,0) scale(1)}}
-    @keyframes blobMove2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-36px,-18px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
-    @keyframes blobMove3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
-
-    .container{position:relative;z-index:2;max-width:var(--max-width);margin:28px auto;padding:18px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;box-shadow:var(--accent-glow)}
-    .brand h1{margin:0;font-size:20px}
-    nav{display:flex;gap:12px;align-items:center}
-    .nav-link{appearance:none;border:0;background:transparent;color:#efeaff;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
-    .store{background:linear-gradient(90deg,rgba(184,123,255,0.12),rgba(122,59,255,0.06));}
-
-    .hero{margin-top:22px;border-radius:var(--radius);overflow:hidden;display:grid;place-items:center;min-height:400px;text-align:center}
-    .hero-content{padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(184,123,255,0.04);backdrop-filter:blur(6px);border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:880px}
-    .hero-content h2{font-size:36px;color:var(--neon-1);margin:0}
-    .status{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-    .status-dot{width:16px;height:16px;border-radius:50%;display:inline-block}
-    .status-text{font-size:20px;font-weight:700}
-
-    .status.active .status-dot{background:var(--neon-green);box-shadow:var(--neon-green-glow);color:var(--neon-green)}
-    .status.active .status-text {
-  color: var(--neon-green);
-  text-shadow:
-    0 0 8px rgba(57,255,20,0.9),
-    0 0 16px rgba(57,255,20,0.7),
-    0 0 28px rgba(57,255,20,0.5),
-    0 0 40px rgba(57,255,20,0.35);
-}
-
-
-    .status.inactive .status-dot{background:#555;box-shadow:none}
-    .status.inactive .status-text{color:#777}
-
-    footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#e8e4ff}
-    .social-icons{display:flex;gap:14px;justify-content:center;align-items:center}
-    .icon-btn{appearance:none;border:0;cursor:pointer;width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(184,123,255,0.06),rgba(122,59,255,0.03));border:1px solid rgba(184,123,255,0.04);color:#fff;transition:transform .12s ease, box-shadow .12s ease}
-    .icon-btn:active{transform:translateY(1px)}
-    .icon-btn:hover{transform:translateY(-3px); box-shadow:var(--accent-glow)}
-
-    /* Ensure external PNG icons are white (invert) and fit nicely */
-    .icon-img{width:22px;height:22px;object-fit:contain;display:block;filter:invert(1) grayscale(1) brightness(1.4);}
-
-    /* BUTTON styles - ensure they apply and look nice */
-    .btn{
-      -webkit-appearance:none;
-      -moz-appearance:none;
-      appearance:none;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      justify-content:center;
-      border:0;
-      padding:12px 18px;
-      border-radius:12px;
-      background:linear-gradient(90deg,var(--neon-1),var(--neon-2));
-      color:white;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow:0 10px 40px rgba(122,59,255,0.12);
-      cursor:pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-      font-size:15px;
-      line-height:1;
-    }
-    .btn:focus{outline:3px solid rgba(184,123,255,0.12);outline-offset:2px}
-    .btn:hover{transform:translateY(-3px) scale(1.02); box-shadow:var(--accent-glow)}
-    .btn:active{transform:translateY(0) scale(0.995)}
-
-    /* Optional brandy discord-styled button (icon on left) */
-    .btn--discord{background:linear-gradient(90deg,var(--discord),#4655d9);box-shadow:0 12px 40px rgba(88,101,242,0.12)}
-    .btn--youtube{background:linear-gradient(90deg,var(--youtube),#cc0000)}
-    .btn--ghost{background:transparent;border:1px solid rgba(184,123,255,0.12);color:#efeaff}
-
-    /* small icon inside hero button */
-    .btn .btn-icon{width:18px;height:18px;display:inline-block;object-fit:contain;filter:invert(1) grayscale(1) brightness(1.2)}
-
-    @media (max-width:980px){
-      nav{display:none}
-    }
-    .menu-btn{display:none;border:1px solid rgba(255,255,255,0.04);background:transparent;padding:8px;border-radius:10px;color:#efeaff}
-    @media (max-width:980px){
-      .menu-btn{display:inline-block}
-    }
-    @media (max-width:560px){
-      .container{margin:12px;padding:12px}
-      .hero-content h2{font-size:28px}
-      .status-text{font-size:18px}
-      .hero{min-height:360px}
-    }
-
-    /* Reduce heavy visuals on small screens for performance */
-    @media (max-width:560px){
-      .bg-blob, .background-grid, .starfield { display:none !important }
-      body::before { background-attachment: scroll }
-    }
-
-    .jobs-grid {
-      display: grid;
-      gap: 38px; /* větší mezery */
-      margin-top: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* širší kartičky */
-      justify-content: center; /* vycentrování pokud je místo navíc */
-    }
-
-    .job-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(184,123,255,0.04);
-      backdrop-filter: blur(6px);
-      border-radius: 16px;
-      padding: 28px; /* o něco víc padding */
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      min-height: 220px; /* aby byly všechny stejně vysoké */
-    }
-
-    .job-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 40px rgba(122,59,255,0.12);
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .job-header h3 {
-      margin: 0;
-      font-size: 20px;
-      color: var(--neon-1);
-    }
-
-    .job-desc {
-      font-size: 14px;
-      color: #d8d0ff;
-      opacity: 0.9;
-    }
-
-    .job-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .job-tags span {
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 12px;
-      background: rgba(184,123,255,0.12);
-      color: #efeaff;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      /* overlay darken + photo */
-      background:
-        linear-gradient(rgba(4,4,6,0.72), rgba(4,4,6,0.72)),
-        url('img/sahphelina.png') center/cover no-repeat;
-      background-attachment: fixed; /* parallax-like feel on scroll */
-      /* jemné posouvání/zoom efektu (volitelné) */
-      transform-origin: center;
-      will-change: transform;
-      transition: transform 0.6s ease;
-    }
-
-    .starfield {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -3;
-      background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.08;
-    }
-
-    .background-grid {
-      position: fixed;
-      inset: 0;
-      z-index: 0; 
-      background-image:
-        linear-gradient(90deg, rgba(184,123,255,0.25) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(122,59,255,0.25) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.6;
-      mix-blend-mode: screen;
-      animation: pulse 4s ease-in-out infinite;
-      filter: blur(0.5px)
-    }
-
-
-    .bg-blob {
-      position: fixed;
-      pointer-events: none;
-      filter: blur(90px) saturate(100%);
-      mix-blend-mode: screen;
-      opacity: 0.7;
-      transform: translate3d(0,0,0);
-      z-index: 1; 
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 0.8; }
-    }
-
-        /* Custom Neon Scrollbar */
-    ::-webkit-scrollbar {
-      width: 12px; /* šířka scrollbar */
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1); /* jemný průhledný track */
-      border-radius: 12px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--neon-1), var(--neon-2));
-      border-radius: 12px;
-      box-shadow: 0 0 6px var(--neon-1), 0 0 12px var(--neon-2);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, var(--neon-2), var(--neon-1));
-      box-shadow: 0 0 12px var(--neon-1), 0 0 24px var(--neon-2);
-    }
-
-    /* Optional: scrollbar corner for Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: var(--neon-1) rgba(0,0,0,0.1);
-    }
-
-
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="cursor-dot"></div>
   <!-- Background blobs -->
   <div class="starfield"></div>
   <div class="background-grid"></div>
@@ -328,7 +42,7 @@
 
     <main>
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-content reveal">
     <h2>Nábor do NXSRP</h2>
     <p style="margin-top:8px;color:#d8d0ff;opacity:0.9;">
       Vyber si pozici a zjisti více informací.
@@ -337,7 +51,7 @@
     <!-- Grid pozic -->
     <div class="jobs-grid">
       <!-- Admin -->
-      <div class="job-card">
+      <div class="job-card reveal">
         <div class="job-header">
           <h3>Administrator</h3>
           <div class="status active">
@@ -356,7 +70,7 @@
       </div>
 
       <!-- Developer -->
-      <div class="job-card">
+      <div class="job-card reveal">
         <div class="job-header">
           <h3>FiveM Developer</h3>
           <div class="status inactive">
@@ -375,7 +89,7 @@
       </div>
 
       <!-- Web Developer -->
-      <div class="job-card">
+      <div class="job-card reveal">
         <div class="job-header">
           <h3>Web Developer</h3>
           <div class="status inactive">
@@ -394,7 +108,7 @@
       </div>
 
       <!-- Správce sociálních sítí -->
-      <div class="job-card">
+      <div class="job-card reveal">
         <div class="job-header">
           <h3>Správce Sociálních sítí.</h3>
           <div class="status active">
@@ -415,7 +129,7 @@
     </div>
 
     <!-- Discord button -->
-    <button class="btn btn--discord" aria-label="Připojit se na Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
+    <button class="btn btn--discord reveal" aria-label="Připojit se na Discord" onclick="window.open('https://discord.gg/NmK5jaGjQW','_blank')">
       <img class="btn-icon" src="https://images.icon-icons.com/4040/PNG/512/discord_logo_icon_256797.png" alt="discord">
       Připojit se na Discord
     </button>
@@ -480,18 +194,47 @@
 
     animate();
 
-    // Mobile menu toggle (same behavior as index)
+    // Mobile menu toggle — use classes so CSS animation / z-index work reliably
     const menuBtn = document.querySelector('.menu-btn');
     menuBtn && menuBtn.addEventListener('click', ()=>{
       const nav = document.querySelector('nav');
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       menuBtn.setAttribute('aria-expanded', String(!expanded));
       if(!expanded){
-        nav.style.display='flex';nav.style.position='absolute';nav.style.right='18px';nav.style.top=(menuBtn.getBoundingClientRect().bottom + window.scrollY + 8)+'px';nav.style.flexDirection='column';nav.style.background='rgba(0,0,0,0.6)';nav.style.padding='12px';nav.style.backdropFilter='blur(6px)';nav.style.borderRadius='10px';
+        nav.classList.add('mobile-nav');
+        // position nav just under the button
+        const rect = menuBtn.getBoundingClientRect();
+        nav.style.right = '18px';
+        nav.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+        // force reflow then open (for transition)
+        void nav.offsetHeight;
+        nav.classList.add('open');
       } else {
-        nav.style.display='none';
+        // close with animation
+        nav.classList.remove('open');
+        // remove mobile-nav after transition ends
+        setTimeout(()=>{
+          nav.classList.remove('mobile-nav');
+          nav.style.top = '';
+          nav.style.right = '';
+        }, 220);
       }
     });
+
+    // Reveal-on-scroll: IntersectionObserver that adds .revealed to .reveal elements
+    (function(){
+      const reveals = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window) || reveals.length===0) return;
+      const obs = new IntersectionObserver((entries, observer)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.12});
+      reveals.forEach(el=>obs.observe(el));
+    })();
   </script>
 </body>
 </html>
