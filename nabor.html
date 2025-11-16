@@ -6,7 +6,6 @@
   <title>NXSRP - Nábor</title>
   <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <div class="cursor-dot"></div>
   <style>
     :root{
       --bg:#040006;
@@ -154,9 +153,9 @@
 
     .jobs-grid {
       display: grid;
-      gap: 38px; /* větší mezery */
+      gap: 24px; /* upravené mezery pro lepší mobilní rozložení */
       margin-top: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* širší kartičky */
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* menší minimální šířka karet pro mobil */
       justify-content: center; /* vycentrování pokud je místo navíc */
     }
 
@@ -301,10 +300,23 @@
       scrollbar-color: var(--neon-1) rgba(0,0,0,0.1);
     }
 
+    /* Additional mobile tweaks: force single-column jobs on narrow viewports */
+    @media (max-width:560px){
+      .jobs-grid{grid-template-columns:1fr;gap:12px}
+      .job-card{padding:16px;min-height:auto}
+      .hero{min-height:280px}
+    }
+
+    /* Hide floating cursor on touch devices to avoid obstruction */
+    @media (hover: none), (pointer: coarse) {
+      .cursor-dot{display:none!important}
+    }
+
 
   </style>
 </head>
 <body>
+  <div class="cursor-dot"></div>
   <!-- Background blobs -->
   <div class="starfield"></div>
   <div class="background-grid"></div>
