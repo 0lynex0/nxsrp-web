@@ -137,6 +137,13 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
   body::before { background-attachment: scroll }
 }
 
+/* Mobile nav animation & top-layer fix */
+@media (max-width:980px){
+  nav.mobile-nav{display:flex;position:absolute;right:18px;flex-direction:column;background:rgba(0,0,0,0.72);padding:12px;backdrop-filter:blur(6px);border-radius:10px;transform-origin:top right;transform:scaleY(0);opacity:0;transition:transform .18s ease,opacity .12s ease;z-index:10050}
+  nav.mobile-nav.open{transform:scaleY(1);opacity:1}
+  .menu-btn{z-index:10060;position:relative}
+}
+
 .float{animation:float 6s ease-in-out infinite}
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
@@ -442,16 +449,30 @@ footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:#
 
     animate();
 
-    // Mobile menu toggle
+    // Mobile menu toggle — use classes so CSS animation / z-index work reliably
     const menuBtn = document.querySelector('.menu-btn');
     menuBtn && menuBtn.addEventListener('click', ()=>{
       const nav = document.querySelector('nav');
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       menuBtn.setAttribute('aria-expanded', String(!expanded));
       if(!expanded){
-        nav.style.display='flex';nav.style.position='absolute';nav.style.right='18px';nav.style.top='78px';nav.style.flexDirection='column';nav.style.background='rgba(0,0,0,0.6)';nav.style.padding='12px';nav.style.backdropFilter='blur(6px)';nav.style.borderRadius='10px';
+        nav.classList.add('mobile-nav');
+        // position nav just under the button
+        const rect = menuBtn.getBoundingClientRect();
+        nav.style.right = '18px';
+        nav.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+        // force reflow then open (for transition)
+        void nav.offsetHeight;
+        nav.classList.add('open');
       } else {
-        nav.style.display='none';
+        // close with animation
+        nav.classList.remove('open');
+        // remove mobile-nav after transition ends
+        setTimeout(()=>{
+          nav.classList.remove('mobile-nav');
+          nav.style.top = '';
+          nav.style.right = '';
+        }, 220);
       }
     });
 
